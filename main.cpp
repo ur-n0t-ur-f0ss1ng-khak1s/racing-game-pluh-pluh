@@ -65,14 +65,14 @@ void drawQuad(RenderWindow &w, Color c, int x1,int y1,int w1,int x2,int y2,int w
 
 int main()
 {
-	RenderWindow app(VideoMode(width, height), "Outrun Racing!");
+	RenderWindow app(VideoMode(width, height), "racing pluh pluh");
 	app.setFramerateLimit(60);
 
-	//uncomment after drwaing bg.png
-	//Texture bg;
-	//bg.loadFromFile("bg.png");
-	//bg.setRepeated(true);
-	//Sprite sBackground(bg);
+	//uncomment after drawing bg.png
+	Texture bg;
+	bg.loadFromFile("res/bg.png");
+	bg.setRepeated(true);
+	Sprite sBackground(bg);
 	
 	//uncomment after drawing tree.png
 	//Texture t;
@@ -123,6 +123,7 @@ int main()
 	//for testing
 	//drawQuad(app, Color::Green, 500, 500, 200, 500, 300, 100);
 	
+  app.draw(sBackground);
 	//draw road
 	for(int n=startPos; n<startPos+300; n++)
 	{
@@ -147,8 +148,15 @@ int main()
 	
 	//draw objects
 	for(int n=startPos+300; n>startPos ;n--)
+  {
 		lines[n%N].drawSprite(app);
+  }
+	Texture car;
+	car.loadFromFile("res/car-forward.png");
+	Sprite sCar(car);
+  sCar.setPosition(420,580);
 
+  app.draw(sCar);
 
 	app.display();
 	}
